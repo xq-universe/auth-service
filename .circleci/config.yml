@@ -13,7 +13,7 @@ jobs:
           key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - run:
           name: Install and compile code
-          command: gradlew clean build
+          command: ./gradlew clean build
       - save_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
           paths:
@@ -22,6 +22,12 @@ jobs:
           key: v1-gradle-cache-{{ checksum "build.gradle" }}
           paths:
             - ~/.gradle/caches
+      - save_cache:
+          key: v1-artifact-cache-{{ checksum "build.gradle" }}
+          paths:
+            - build/libs
+      - store_artifacts:
+          path: build/libs
   test:
     docker:
       - image: circleci/openjdk:11.0.2
@@ -38,42 +44,36 @@ jobs:
 
   release:
     docker:
-      - image: circleci/node:8
-    working_directory: ~/node-mocha-chai-react-server
+      - image: circleci/openjdk:11.0.2
+    working_directory: ~/auth-service
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - restore_cache:
-          key: app-build-cache-{{ checksum "package.json" }}
+          key: v1-artifact-cache-{{ checksum "build.gradle" }}
       - run:
           name: Release
           command: bash ./ci/release.sh
 
   docker:
     machine: true
-    working_directory: ~/node-mocha-chai-react-server
+    working_directory: ~/auth-service
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - restore_cache:
-          key: app-build-cache-{{ checksum "package.json" }}
+          key: v1-artifact-cache-{{ checksum "build.gradle" }}
       - run:
           name: Docker build
           command: bash ./ci/docker.sh
 
   deploy:
     machine: true
-    working_directory: ~/node-mocha-chai-react-server
+    working_directory: ~/auth-service
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - restore_cache:
-          key: app-build-cache-{{ checksum "package.json" }}
+          key: v1-artifact-cache-{{ checksum "build.gradle" }}
       - run:
-          name: Deploy image
+          name: Deploy
           command: bash ./ci/deploy.sh
 
 workflows:

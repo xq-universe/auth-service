@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-APP_NAME='auth-service'
+APP_NAME='xq-universe-auth-service'
 APP_VERSION=`cat VERSION`
 
 echo 'Config user name & user email'
