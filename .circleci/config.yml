@@ -23,7 +23,7 @@ jobs:
           paths:
             - ~/.gradle/caches
       - save_cache:
-          key: v1-artifact-cache-{{ checksum "build.gradle" }}
+          key: v1-artifact-cache-{{ checksum "VERSION" }}
           paths:
             - build/libs
       - store_artifacts:
@@ -49,7 +49,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-artifact-cache-{{ checksum "build.gradle" }}
+          key: v1-artifact-cache-{{ checksum "VERSION" }}
       - run:
           name: Release
           command: bash ./ci/release.sh
@@ -60,7 +60,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-artifact-cache-{{ checksum "build.gradle" }}
+          key: v1-artifact-cache-{{ checksum "VERSION" }}
       - run:
           name: Docker build
           command: bash ./ci/docker.sh
@@ -71,7 +71,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: v1-artifact-cache-{{ checksum "build.gradle" }}
+          key: v1-artifact-cache-{{ checksum "VERSION" }}
       - run:
           name: Deploy
           command: bash ./ci/deploy.sh
