@@ -1,0 +1,19 @@
+server:
+  port: 8001
+  tomcat:
+    max-threads: 2
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:mysql://${db.host}/auth-db
+    username: ${db.username}
+    password: ${db.password}
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml

@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    show-sql: true
+
+db:
+  host: localhost:3306
+  username: root
+  password: root
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG

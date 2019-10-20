@@ -1,0 +1,1 @@
+web: java -jar build/libs/auth-service-1.0.0.jar

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet id="changelog-1.0" author="XiaoqiCao">
+        <createTable tableName="account">
+            <column name="id" type="uuid">
+                <constraints nullable="true" primaryKey="true" unique="true"/>
+            </column>
+            <column name="uid" type="VARCHAR(50)"/>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="email" type="VARCHAR(50)"/>
+            <column name="password" type="VARCHAR(100)"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="created_by" type="VARCHAR(50)"/>
+            <column name="updated_at" type="TIMESTAMP"/>
+            <column name="updated_by" type="VARCHAR(50)"/>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet id="changelog-1.1" author="XiaoqiCao">
+        <insert tableName="account">
+            <column name="id" value="c7bcf4d4-5807-45f1-a5c2-0e8205a011d0"/>
+            <column name="uid" value="XQ000001"/>
+            <column name="name" value="xqcao"/>
+            <column name="email" value="xqcao@xqcao.com"/>
+            <column name="password" value="admin"/>
+            <column name="created_at" value="NOW()"/>
+            <column name="created_by" value="SYSTEM"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
