@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-REPOSITORY='xq-universe/auth-service'
+REPOSITORY='xquniverse/auth-service'
 VERSION=`cat VERSION`
 
 echo 'Login to docker registry'
