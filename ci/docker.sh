@@ -8,7 +8,7 @@ echo 'Login to docker registry'
 docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
 
 echo 'Build docker image'
-docker build -t ${REPOSITORY} .
+docker build --build-arg version=${VERSION} -t ${REPOSITORY} .
 
 echo 'Tag image'
 docker tag ${REPOSITORY}:latest ${REPOSITORY}:${VERSION}
