@@ -7,7 +7,6 @@ plugins {
 
 group = 'com.xqcao.universe'
 version = rootProject.file('VERSION').text.trim()
-sourceCompatibility = '11'
 
 configurations {
 	compileOnly {
