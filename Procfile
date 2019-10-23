@@ -1,1 +1,1 @@
-web: java -jar auth-service.jar --spring.profiles.active=prod
+web: java -jar build/libs/*.jar --spring.profiles.active=prod

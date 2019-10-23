@@ -11,8 +11,7 @@ git config user.name "$name"
 git config user.email "$email"
 
 echo 'Commit build files'
-mv build/libs/auth-service-$APP_VERSION.jar auth-service.jar
-git add -f auth-service.jar
+git add -f build/libs
 git commit -m "Deploy v$APP_VERSION"
 
 echo 'Deploy code to heroku'
