@@ -2,12 +2,11 @@ package com.xqcao.universe.auth.infrastructure.mapper;
 
 import com.xqcao.universe.auth.domain.entity.Account;
 import com.xqcao.universe.auth.infrastructure.persistence.po.AccountPo;
-import com.xqcao.universe.auth.infrastructure.util.UuidConverter;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = UuidConverter.class, unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AccountMapper {
     AccountMapper MAPPER = Mappers.getMapper(AccountMapper.class);
 

@@ -7,7 +7,7 @@
 
     <changeSet id="changelog-1.0" author="XiaoqiCao">
         <createTable tableName="account">
-            <column name="id" type="uuid">
+            <column name="id" type="CHAR(36)">
                 <constraints nullable="true" primaryKey="true" unique="true"/>
             </column>
             <column name="uid" type="VARCHAR(50)"/>
