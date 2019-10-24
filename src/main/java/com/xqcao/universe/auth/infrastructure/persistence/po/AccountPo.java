@@ -2,7 +2,6 @@ package com.xqcao.universe.auth.infrastructure.persistence.po;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Setter
 @Getter
@@ -19,9 +19,8 @@ import java.time.LocalDateTime;
 public class AccountPo {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
-    private String id;
+    @GeneratedValue
+    private UUID id;
     private String uid;
     private String name;
     private String email;
