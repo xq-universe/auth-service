@@ -2,13 +2,8 @@ package com.xqcao.universe.auth.infrastructure.persistence.po;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -16,21 +11,12 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @Table(name = "account")
-public class AccountPo {
-
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private String id;
+public class AccountPo extends BasePo {
     private String uid;
-    private String name;
+    private String tel;
     private String email;
+    private String status;
     private String password;
-    private String createdBy;
-    private String updatedBy;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private LocalDateTime activeDate;
+    private LocalDateTime expiryDate;
 }

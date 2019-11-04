@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AccountSearchRequest {
     private String uid;
-    private String name;
+    private String tel;
     private String email;
 }

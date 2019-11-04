@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 @Getter
 public class AccountSearchCondition {
     private String uid;
-    private String name;
+    private String tel;
     private String email;
 
     private Pageable pageable;

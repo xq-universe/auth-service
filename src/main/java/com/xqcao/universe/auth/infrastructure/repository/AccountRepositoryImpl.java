@@ -31,7 +31,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     public Page<Account> search(AccountSearchCondition condition) {
         Predicate predicate = PredicateBuilder.builder()
                 .andNotEmpty(accountPo.uid::like, condition.getUid())
-                .andNotEmpty(accountPo.name::like, condition.getName())
+                .andNotEmpty(accountPo.tel::like, condition.getTel())
                 .andNotEmpty(accountPo.email::like, condition.getEmail())
                 .build();
         return repo.findAll(predicate, condition.getPageable())
