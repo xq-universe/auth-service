@@ -1,4 +1,4 @@
-FROM openjdk
+FROM openjdk:11-jdk
 ARG version
 LABEL maintainer="xqcao<xqcao@xqcao.com>"
 LABEL com.docker.compose.container-name="auth-service"

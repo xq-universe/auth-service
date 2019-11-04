@@ -3,7 +3,9 @@ spring:
     show-sql: true
 
 db:
-  host: localhost:3306
+  host: localhost
+  port: 3306
+  name: auth-db
   username: root
   password: root
 
